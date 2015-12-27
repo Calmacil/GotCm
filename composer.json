@@ -1,0 +1,11 @@
+{
+    "name": "calmacil/gotcm",
+    "authors": [
+        {
+            "name": "Calmacil",
+            "email": "thomas.lenoel@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}

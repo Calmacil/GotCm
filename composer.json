@@ -7,5 +7,14 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {}
+    "require": {
+        "twig/twig": "~1.0",
+        "maximebf/debugbar": "1.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Got\\": "src",
+            "Got\\Actions\\": "actions"
+        }
+    }
 }

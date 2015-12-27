@@ -12,5 +12,3 @@ require_once ROOT.'/vendor/autoload.php';
 use \Got\Core\Config;
 
 $conf = new Config(ROOT."/config/config.json");
-
-var_dump($conf::get("Db")->host);

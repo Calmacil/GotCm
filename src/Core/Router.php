@@ -54,7 +54,7 @@ class Router
      * @param string $routes_file
      * @return Router
      */
-    public function getInstance($routes_file = null)
+    public static function getInstance($routes_file = null)
     {
         if(!self::$_instance) {
             self::$_instance = new Router();

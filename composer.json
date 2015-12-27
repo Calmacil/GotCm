@@ -6,6 +6,7 @@
             "email": "thomas.lenoel@gmail.com"
         }
     ],
+    "description": "A \"simple\" campain and map manager for the ASOIAF tabletop RPG.",
     "minimum-stability": "dev",
     "require": {
         "twig/twig": "~1.0",

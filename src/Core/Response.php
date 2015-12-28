@@ -73,11 +73,6 @@ class Response
         $this->template = $template . '.twig';
     }
 
-    public function setDebugBar($debug_bar)
-    {
-        $this->debug_bar= $debug_bar;
-    }
-
     /**
      * @param string $key
      * @param mixed $value
@@ -92,11 +87,9 @@ class Response
      */
     public function render()
     {
-        if ($this->debug_bar) {
-            $renderer = $this->debug_bar->getJavascriptRenderer('/debugbar');
-
-            $this->assign('DEBUGBAR_HEADER', $renderer->renderHead());
-            $this->assign('DEBUGBAR', $renderer->render());
+        if (Config::get('debug')) {
+            $this->assign('DEBUGBAR_HEADER',Debug::getInstance()->getRenderer()->renderHead());
+            $this->assign('DEBUGBAR', Debug::getInstance()->getRenderer()->render());
         }
         $content = $this->environment->render($this->template, $this->template_vars);
 

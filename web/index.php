@@ -9,24 +9,21 @@
 define("ROOT", __DIR__.'/..');
 require_once ROOT.'/vendor/autoload.php';
 
-use DebugBar\StandardDebugBar;
-
 use \Got\Core\Config;
+use \Got\Core\Debug;
+use \Got\Core\Router;
+use \Got\Core\Response;
+use \Got\Core\Request;
 
 $conf = new Config(ROOT."/config/config.json");
-$router = \Got\Core\Router::getInstance(ROOT."/config/routes.json");
-
-$debug = null;
-
 if (Config::get('debug')) {
-    $debug = new StandardDebugBar();
+    $debug = Debug::getInstance();
 }
 
-$request = new \Got\Core\Request($_SERVER['REQUEST_URI']);
-$response = new \Got\Core\Response();
-if (Config::get('debug')) {
-    $response->setDebugBar($debug);
-}
+$router = Router::getInstance(ROOT."/config/routes.json");
+$request = new Request($_SERVER['REQUEST_URI']);
+$response = new Response();
+
 try {
     $request->proceed();
 

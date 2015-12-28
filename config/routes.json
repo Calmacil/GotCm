@@ -1,0 +1,6 @@
+{
+  "home" : {
+    "pattern": "/?",
+    "controller": "home"
+  }
+}

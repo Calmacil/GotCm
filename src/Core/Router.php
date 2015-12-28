@@ -21,7 +21,7 @@ class Router
 
     /**
      * Array of Routes
-     * @var array-of-\Got\Core\Route
+     * @var array-of-Route<string>
      */
     private $_routes = array();
 
@@ -67,11 +67,11 @@ class Router
     }
 
     /**
-     * @param $name
-     * @return \Got\Core\Route
+     * @param string $name
+     * @return Route
      * @throws \ErrorException
      */
-    public function getRoute(string $name)
+    public function getRoute($name)
     {
         if (!array_key_exists($name, $this->_routes)) {
             throw new \ErrorException("The route $name does not exist.", 005, E_USER_WARNING);
@@ -87,7 +87,7 @@ class Router
      * @return mixed|string
      * @throws \ErrorException
      */
-    public function generateRoute(string $name, array $params)
+    public function generateRoute($name, $params)
     {
         return $this->getRoute($name)->generate($params);
     }
@@ -98,10 +98,10 @@ class Router
      * @param string $uri
      * @return bool|\Got\Core\Route
      */
-    public function search(string $uri)
+    public function search($uri)
     {
-        foreach($this->_routes as $route) {
-            if ($route->check()) {
+        foreach($this->_routes as $name => $route) {
+            if ($route->check($uri)) {
                 return $route;
             }
         }

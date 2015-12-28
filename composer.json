@@ -15,7 +15,7 @@
     "autoload": {
         "psr-4": {
             "Got\\": "src",
-            "Got\\Actions\\": "actions"
+            "Got\\Action\\": "actions"
         }
     }
 }

@@ -26,7 +26,7 @@ class Route
     /**
      * @var array $_params
      */
-    private $_params;
+    private $_params = array();
 
     /**
      * @var string $_action
@@ -50,7 +50,7 @@ class Route
      * @throws \ErrorException      If given $settings does not contains `pattern` or `controller` keys. Other keys are
      *                              fully optional.
      */
-    public function __construct(string $name, array $settings)
+    public function __construct($name, $settings)
     {
         if (!array_key_exists('pattern', $settings) || !array_key_exists('controller', $settings)) {
             throw new \ErrorException("Route $name needs at least 'controller' and 'regex' keys", 002, E_ERROR);
@@ -58,7 +58,7 @@ class Route
 
         $this->_name = $name;
         $this->_controller = $settings['controller'];
-        $this->_pattern = $settings['regex'];
+        $this->_pattern = $settings['pattern'];
         if (array_key_exists('params', $settings)) $this->_params = $settings['params'];
         if (array_key_exists('action', $settings)) $this->_action = $settings['action'];
     }
@@ -128,7 +128,7 @@ class Route
      * @param $url string
      * @return bool
      */
-    public function check(string $url)
+    public function check($url)
     {
         $formatted_regex = $this->_pattern;
         foreach ($this->_params as $param => $format) {

@@ -47,6 +47,9 @@ class Request
     public function proceed()
     {
         $this->route = Router::getInstance()->search($this->uri);
+        if (!$this->route) {
+            throw new \Exception("Impossible to create the Route object");
+        }
     }
 
     /**
@@ -59,5 +62,30 @@ class Request
             throw new InvalidArgumentException("Parameter $key does not exist in the request POST parameters");
         }
         return $this->post_params[$key];
+    }
+
+    /**
+     * @param string $key
+     * return mixed
+     */
+    public function get($key)
+    {
+        return $this->route->getHttpParams($key);
+    }
+
+    /**
+     * @return string
+     */
+    public function getController()
+    {
+        return $this->route->getController();
+    }
+
+    /**
+     * @return string
+     */
+    public function getAction()
+    {
+        return $this->route->getAction();
     }
 }

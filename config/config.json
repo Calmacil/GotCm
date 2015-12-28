@@ -1,8 +1,9 @@
 {
-  "Db": {
+  "db": {
     "host": "localhost",
     "user": "gotcm",
     "password": "gotcm",
     "dbname": "gotcm"
-  }
+  },
+  "debug": true
 }

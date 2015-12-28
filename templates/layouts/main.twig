@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title>This is my Template !</title>
+
+        {% block head_assets %}{% endblock %}
+    </head>
+
+    <body>
+
+        <div id="content">
+            {% block content %}{% endblock %}
+        </div>
+
+        {% block foot_assets %}{% endblock %}
+
+        {% if DEBUGBAR is defined %}
+            {% autoescape false %}
+                {{ DEBUGBAR_HEADER }}
+                {{ DEBUGBAR }}
+            {% endautoescape %}
+        {% endif %}
+
+    </body>
+
+</html>

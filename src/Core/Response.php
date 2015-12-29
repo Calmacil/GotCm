@@ -8,7 +8,6 @@
 
 namespace Got\Core;
 
-use DebugBar\DebugBar;
 use Got\Core\TwigExtensions\Functions;
 
 class Response
@@ -47,11 +46,6 @@ class Response
     private $status = self::STATUS_OK;
 
     /**
-     * @var DebugBar
-     */
-    private $debug_bar;
-
-    /**
      * Inits the Twig environment
      *
      * Response constructor.
@@ -63,6 +57,13 @@ class Response
             'cache' => ROOT.'/cache/twig/',
             'debug' => Config::get('debug')
         ));
+
+        // register new functions
+        $function_names = get_class_methods("\\Got\\Core\\TwigExtensions\\Functions");
+        foreach ($function_names as $func_name) {
+            $func = new \Twig_SimpleFunction($func_name, array("\\Got\\Core\\TwigExtensions\\Functions", $func_name));
+            $this->environment->addFunction($func);
+        }
     }
 
     /**

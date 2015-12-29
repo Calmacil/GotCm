@@ -1,5 +1,6 @@
 {
   "db": {
+    "dbtype": "mysql",
     "host": "localhost",
     "user": "gotcm",
     "password": "gotcm",

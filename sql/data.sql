@@ -120,5 +120,20 @@ INSERT INTO `unit_type`
  `armor_malus`, `encumbrance`, `melee_damage_skill`, `melee_damage_mod`, `dist_damage_skill`, `dist_damage_mod`,
  `dist_range`, `armor_upg`, `armor_malus_upg`, `encumbrance_upg`, `melee_damage_mod_upg`, `dist_damage_mod_upg`)
 VALUES
-  ('Archers', 3, 0, 0, 3, 1, 17, 18, 2, -1, 0, 3, -1, 1, 2, 'portée longue', 3, -2, 0, 0, 3),
-  ('Cavalerie', 5, 0, 0, -3, 1, 5, 7, 5, -3, 2, 7, 3, NULL, 0, NULL, 9, -5, 3, 5, NULL );
+  ('Archers', 3, 0, 0, 3, 1, 17, 18, 2, -1, 0, 3, -1, 1, 2, 'longue portée', 3, -2, 0, 0, 3),
+  ('Cavalerie', 5, 0, 0, -3, 1, 5, 7, 5, -3, 2, 7, 3, NULL, 0, NULL, 9, -5, 3, 5, NULL ),
+  ('Criminels', 1, 0, 0, 6, 5, 6, 9, 1, 0, 0, 3, -1, 3, -1, 'courte portée', 2, -1, 0, 0, 0),
+  ('Croisés', 4, 0, 0, 0, 3, 5, 9, 3, -2, 0, 3, 1, NULL, 0, NULL, 4, -2, 1, 2, NULL),
+  ('Éclaireurs', 2, 0, 0, 3, 9, 6, 18, 2, -1, 0, 3, 0, 1, 0, 'longue portée', 3, -2, 0, 1, 1),
+  ('Garde personnelle', 6, 0, 0, -6, 3, 5, 9, 6, -3, 2, 3, 1, NULL, 0, NULL, 10, -6, 3, 2, NULL),
+  ('Garnison', 2, 0, 0, 0, 5, 9, 18, 3, -2, 0, 3, 1, NULL, 0, NULL, 5, -3, 2, 2, NULL),
+  ('Guérilleros', 2, 0, 0, 3, 3, 6, 17, 1, 0, 0, 3, 0, 1, 1, 'courte portée', 3, -2, 0, 1, 2),
+  ('Infanterie', 4, 0, 0, 0, 3, 5, 9, 3, -2, 0, 3, 1, NULL, 0, NULL, 4, -2, 1, 2, NULL),
+  ('Ingénieurs', 2, 0, 0, 3, 2, 5, 9, 2, -1, 0, 3, -1, NULL, 0, NULL, 5, -3, 2, 0, NULL),
+  ('Marins', 4, 0, 0, 0, 1, 5, 18, 0, 0, 0, 3, 1, NULL, 0, NULL, 2, -1, 0, 2, NULL),
+  ('Mercenaires', 1, 0, 4, 3, 3, 5, 9, 4, -2, 1, 3, 1, NULL, 0, NULL, 5, -3, 2, 3, NULL),
+  ('Navires de guerre', 7, 0, 0, 0, 5, 17, 18, 5, 0, 0, 3, 1, 1, 1, 'longue portée', 10, 0, 0, 4, 3),
+  ('Paysans conscrits', 0, 2, 0, 6, 7, 16, 18, 0, 0, 0, 3, -1, 3, -1, 'courte portée', 2, -1, 0, 0, 0),
+  ('Pillards', 3, 0, 0, 3, 1, 5, 9, 2, -1, 0, 3, 1, NULL, 0, NULL, 5, -2, 2, 2, NULL),
+  ('Soutien', 2, 0, 0, 3, 7, 9, 14, 0, 0, 0, 3, -1, NULL, 0, NULL, 2, -1, 0, 0, NULL),
+  ('Spéciale', 4, 0, 0, 0, 0, 0, 0, 2, -1, 0, 3, 0, 1, 0, NULL, 6, -3, 2, 1, 1);

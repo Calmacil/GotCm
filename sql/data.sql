@@ -30,7 +30,7 @@ VALUES
   ('Château', 40, 106, 156, 5, 8, 'Des forteresses impressionnantes. La plupart comprennent au moins un donjon central et plusieurs tours reliées par des murs et entourées de douves.'),
   ('Petit château', 30, 82, 132, 3, 6, 'Version modeste d’un château ordinaire. Il ne comporte généralement pas plus d’un seul donjon, et quelque chose comme deux tours et un mur.'),
   ('Demeure fortifiée', 20, 70, 120, 2, 4, 'Une demeure (ou donjon) est généralement un petit bâtiment fortifié. Il peut être ou non entouré d’une enceinte, et peut disposer d’une tour, mais c’est relativement rare.'),
-  ('Tour', 10, 46, 86, 1, 3, 'Les tours tours sont des bâtiments en pierres brutes ou en bois qui s’ĺèvent au-dessus du sol. Quand elles sont pourvues ded épendances, celles-ci sont modestes et non protégées.');
+  ('Tour', 10, 46, 86, 1, 3, 'Les tours sont des bâtiments en pierres brutes ou en bois qui s’éĺèvent au-dessus du sol. Quand elles sont pourvues de dépendances, celles-ci sont modestes et non protégées.');
 
 -- Table `wealth_asset`
 INSERT INTO `wealth_asset`
@@ -136,4 +136,4 @@ VALUES
   ('Paysans conscrits', 0, 2, 0, 6, 7, 16, 18, 0, 0, 0, 3, -1, 3, -1, 'courte portée', 2, -1, 0, 0, 0),
   ('Pillards', 3, 0, 0, 3, 1, 5, 9, 2, -1, 0, 3, 1, NULL, 0, NULL, 5, -2, 2, 2, NULL),
   ('Soutien', 2, 0, 0, 3, 7, 9, 14, 0, 0, 0, 3, -1, NULL, 0, NULL, 2, -1, 0, 0, NULL),
-  ('Spéciale', 4, 0, 0, 0, 0, 0, 0, 2, -1, 0, 3, 0, 1, 0, NULL, 6, -3, 2, 1, 1);
+  ('Spéciale', 4, 0, 0, 0, 1, 2, 3, 2, -1, 0, 3, 0, 1, 0, NULL, 6, -3, 2, 1, 1);

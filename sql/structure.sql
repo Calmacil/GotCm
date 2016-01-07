@@ -35,7 +35,7 @@ CREATE TABLE `crown` (
   `power_bonus` TINYINT NOT NULL DEFAULT 0,
   `wealth_bonus` TINYINT NOT NULL DEFAULT 0,
   `land_bonus` TINYINT NOT NULL DEFAULT 0
-)ENGINE InnoDB;
+)ENGINE InnoDB, CHARSET utf8, COLLATE utf8_general_ci;
 
 CREATE TABLE `house` (
   `id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -56,7 +56,7 @@ CREATE TABLE `house` (
   `coat_of_arms_img` VARCHAR(64) DEFAULT NULL,
   `words` VARCHAR(256) DEFAULT NULL,
   CONSTRAINT `f_house_crown` FOREIGN KEY (`crown_id`) REFERENCES `crown`(`id`)
-)ENGINE InnoDB;
+)ENGINE InnoDB, CHARSET utf8, COLLATE utf8_general_ci;
 
 CREATE TABLE `defense_asset` (
   `id` TINYINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -67,7 +67,7 @@ CREATE TABLE `defense_asset` (
   `units_capacity` TINYINT UNSIGNED NOT NULL DEFAULT 0,
   `units_defense` TINYINT UNSIGNED NOT NULL DEFAULT 0,
   `description` TINYTEXT DEFAULT NULL
-) ENGINE InnoDB;
+) ENGINE InnoDB, CHARSET utf8, COLLATE utf8_general_ci;
 
 CREATE TABLE `wealth_asset` (
   `id` TINYINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -77,26 +77,26 @@ CREATE TABLE `wealth_asset` (
   `max_ttb` TINYINT UNSIGNED NOT NULL DEFAULT 0,
   `intendance_bonus` TINYINT UNSIGNED NOT NULL DEFAULT 0,
   `description` TINYTEXT DEFAULT NULL
-) ENGINE InnoDB;
+) ENGINE InnoDB, CHARSET utf8, COLLATE utf8_general_ci;
 
 CREATE TABLE `land_asset` (
   `id` TINYINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `name` VARCHAR(32) NOT NULL,
   `cost` TINYINT UNSIGNED NOT NULL DEFAULT 0,
   `type` ENUM('Terrain','Bois','Cours d’eau', 'Île', 'Localité','Autre')
-);
+)ENGINE InnoDB, CHARSET utf8, COLLATE utf8_general_ci;
 
 CREATE TABLE `skill` (
   `id` TINYINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `name` VARCHAR(32)
-)ENGINE InnoDB;
+)ENGINE InnoDB, CHARSET utf8, COLLATE utf8_general_ci;
 
 CREATE TABLE `speciality` (
   `id`     TINYINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   skill_id TINYINT UNSIGNED NOT NULL,
   `name`   VARCHAR(32)      NOT NULL,
   CONSTRAINT `f_speciality_skill` FOREIGN KEY (skill_id) REFERENCES `skill`(`id`)
-)ENGINE InnoDB;
+)ENGINE InnoDB, CHARSET utf8, COLLATE utf8_general_ci;
 
 CREATE TABLE `unit_type` (
   `id` TINYINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -124,7 +124,7 @@ CREATE TABLE `unit_type` (
   CONSTRAINT `f_unit_type_skill1` FOREIGN KEY (`skill_1`) REFERENCES `skill`(`id`),
   CONSTRAINT `f_unit_type_skill2` FOREIGN KEY (`skill_2`) REFERENCES `skill`(`id`),
   CONSTRAINT `f_unit_type_skill3` FOREIGN KEY (`skill_3`) REFERENCES `skill`(`id`)
-) ENGINE InnoDB;
+) ENGINE InnoDB, CHARSET utf8, COLLATE utf8_general_ci;
 
 -- CONSTRAINT `f_unit_type_melee` FOREIGN KEY (`melee_damage_skill`) REFERENCES `skill`(`id`)
 
@@ -138,7 +138,7 @@ CREATE TABLE `domain` (
   `description` TEXT,
   CONSTRAINT `f_domain_house` FOREIGN KEY (`house_id`) REFERENCES `house`(`id`),
   CONSTRAINT `f_domain_terrain` FOREIGN KEY (`terrain`) REFERENCES `land_asset`(`id`)
-) ENGINE InnoDB;
+) ENGINE InnoDB, CHARSET utf8, COLLATE utf8_general_ci;
 
 CREATE TABLE `domain_land` (
   `id`       INT UNSIGNED       NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -147,7 +147,7 @@ CREATE TABLE `domain_land` (
   `name`     VARCHAR(32) DEFAULT NULL,
   CONSTRAINT `fk_domland_domain` FOREIGN KEY (`domain_id`) REFERENCES `domain`(`id`),
   CONSTRAINT `fk_domland_land` FOREIGN KEY (`id_asset`) REFERENCES `land_asset`(`id`)
-) ENGINE InnoDB;
+) ENGINE InnoDB, CHARSET utf8, COLLATE utf8_general_ci;
 
 CREATE TABLE `domain_defense` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -156,7 +156,7 @@ CREATE TABLE `domain_defense` (
   `remaining_time` TINYINT NOT NULL DEFAULT 0,
   CONSTRAINT FOREIGN KEY (`domain_id`) REFERENCES `domain`(`id`),
   CONSTRAINT FOREIGN KEY (`asset_id`) REFERENCES `defense_asset`(`id`)
-) ENGINE InnoDB;
+) ENGINE InnoDB, CHARSET utf8, COLLATE utf8_general_ci;
 
 CREATE TABLE `house_wealth` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -167,7 +167,7 @@ CREATE TABLE `house_wealth` (
   CONSTRAINT FOREIGN KEY (`domain_id`) REFERENCES `domain`(`id`),
   CONSTRAINT FOREIGN KEY (`house_id`) REFERENCES `house`(`id`),
   CONSTRAINT FOREIGN KEY (`asset_id`) REFERENCES `wealth_asset`(`id`)
-) ENGINE InnoDB;
+) ENGINE InnoDB, CHARSET utf8, COLLATE utf8_general_ci;
 
 CREATE TABLE `unit` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -183,4 +183,4 @@ CREATE TABLE `unit` (
   `xp_spent` TINYINT UNSIGNED DEFAULT 0,
   CONSTRAINT FOREIGN KEY (`type_id`) REFERENCES `unit_type`(`id`),
   CONSTRAINT FOREIGN KEY (`house_id`) REFERENCES `house`(`id`)
-) ENGINE InnoDB;
+) ENGINE InnoDB, CHARSET utf8, COLLATE utf8_general_ci;

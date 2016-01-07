@@ -83,11 +83,11 @@ class Router
      * Generates the given route with given params
      *
      * @param $name string          The route's name
-     * @param $params array         The params to insert
+     * @param $params array|null         The params to insert
      * @return mixed|string
      * @throws \ErrorException
      */
-    public function generateRoute($name, $params)
+    public function generateRoute($name, $params=null)
     {
         return $this->getRoute($name)->generate($params);
     }

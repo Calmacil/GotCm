@@ -113,12 +113,14 @@ class Route
      *
      * @param $params
      */
-    public function generate(array $params)
+    public function generate($params)
     {
-        $uri = "/" . $this->_pattern;
+        $uri = $this->_pattern;
 
-        foreach (array_keys($this->_params) as $key) {
-            $uri = str_replace(":$key:", $params[$key], $uri);
+        if ($params && is_array($params)) {
+            foreach (array_keys($this->_params) as $key) {
+                $uri = str_replace(":$key:", $params[$key], $uri);
+            }
         }
         return $uri;
     }

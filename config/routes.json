@@ -1,6 +1,14 @@
 {
   "home" : {
-    "pattern": "/?",
+    "pattern": "/",
     "controller": "home"
+  },
+  "house" : {
+    "pattern": "/maison/:id:",
+    "params": {
+      "id": "\\d+"
+    },
+    "controller": "house",
+    "action": "edit"
   }
 }

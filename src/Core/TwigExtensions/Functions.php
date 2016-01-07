@@ -18,7 +18,7 @@ class Functions
      * @param $params
      * @return mixed|string
      */
-    public static function url($route_name, $params)
+    public static function url($route_name, $params=null)
     {
         return Router::getInstance()->generateRoute($route_name, $params);
     }

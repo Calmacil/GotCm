@@ -52,9 +52,11 @@ class Response
      */
     public function __construct()
     {
-        $this->loader = new \Twig_Loader_Filesystem(ROOT.'/templates');
+        $PATHS = Config::get('path');
+
+        $this->loader = new \Twig_Loader_Filesystem(ROOT.$PATHS->templates);
         $this->environment = new \Twig_Environment($this->loader, array(
-            'cache' => ROOT.'/cache/twig/',
+            'cache' => ROOT.$PATHS->twig_cache,
             'debug' => Config::get('debug')
         ));
 

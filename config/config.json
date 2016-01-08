@@ -6,5 +6,12 @@
     "password": "gotcm",
     "dbname": "gotcm"
   },
-  "debug": true
+  "debug": true,
+  "path": {
+    "cache": "/cache",
+    "twig_cache": "/cache/twig",
+    "templates": "/templates",
+    "libs": "/libs",
+    "routes_file": "/config/routes.json"
+  }
 }

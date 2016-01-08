@@ -28,11 +28,12 @@ class Db
      */
     private function __construct()
     {
-        $dsn = sprintf("%s:host=%s;dbname=%s", Config::get('db')->dbtype, Config::get('db')->host, Config::get('db')->dbname);
+        $conf = Config::get('db');
+        $dsn = sprintf("%s:host=%s;dbname=%s", $conf->dbtype, $conf->host, $conf->dbname);
         Debug::info("Establishing DB connection for $dsn");
 
         try {
-            $this->pdo = new \PDO($dsn, Config::get('db')->user, Config::get('db')->password);
+            $this->pdo = new \PDO($dsn, $conf->user, $conf->password);
         }
         catch(\PDOException $e) {
             Debug::error("Cannot establish database connection:\n{$e->getMessage()}\n{$e->getTraceAsString()}");

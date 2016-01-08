@@ -20,7 +20,7 @@ if (Config::get('debug')) {
     $debug = Debug::getInstance();
 }
 
-$router = Router::getInstance(ROOT."/config/routes.json");
+$router = Router::getInstance(ROOT.Config::get('path')->routes_file);
 $request = new Request($_SERVER['REQUEST_URI']);
 $response = new Response();
 

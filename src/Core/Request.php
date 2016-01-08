@@ -48,7 +48,7 @@ class Request
     {
         $this->route = Router::getInstance()->search($this->uri);
         if (!$this->route) {
-            throw new \Exception("Impossible to create the Route object");
+            throw new \Exception("Impossible to create the Route object for route {$this->route}");
         }
     }
 

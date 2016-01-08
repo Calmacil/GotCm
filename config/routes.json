@@ -1,7 +1,16 @@
 {
-  "home" : {
-    "pattern": "/",
-    "controller": "home"
+  "houselist": {
+    "pattern": "/maisons/:crown:",
+    "params": {
+      "crown": "\\w+"
+    },
+    "controller": "house",
+    "action": "list"
+  },
+  "houselist_full": {
+    "pattern": "/maisons",
+    "controller": "house",
+    "action": "list"
   },
   "house" : {
     "pattern": "/maison/:id:",
@@ -10,5 +19,11 @@
     },
     "controller": "house",
     "action": "edit"
+  },
+
+
+  "home" : {
+    "pattern": "/",
+    "controller": "home"
   }
 }

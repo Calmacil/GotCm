@@ -7,6 +7,8 @@
 -- This data is essential and the app cannot function correctly without.
 
 -- Table `crown`
+SET CHARSET utf8;
+
 INSERT INTO `crown`
   (`name`, `small_name`, `base_color`, `defense_bonus`, `influence_bonus`, `law_bonus`, `population_bonus`,
    `power_bonus`, `wealth_bonus`, `land_bonus`)

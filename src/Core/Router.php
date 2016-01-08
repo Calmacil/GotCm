@@ -43,6 +43,10 @@ class Router
         $json = file_get_contents($routes_file);
         $routes = json_decode($json, true);
 
+        if(!$routes) {
+            print_r(json_last_error_msg());
+        }
+
         foreach ($routes as $route_name => $route_settings) {
             $this->_routes[$route_name] = new Route($route_name, $route_settings);
         }

@@ -82,7 +82,11 @@ class Response
      */
     public function assign($key, $value)
     {
-        $this->template_vars[$key] = html_entity_decode($value);
+        if (is_string($value)) {
+            $this->template_vars[$key] = html_entity_decode($value);
+        } else {
+            $this->template_vars[$key] = $value;
+        }
     }
 
     /**
@@ -94,6 +98,9 @@ class Response
             $this->assign('DEBUGBAR_HEADER',Debug::getInstance()->getRenderer()->renderHead());
             $this->assign('DEBUGBAR', Debug::getInstance()->getRenderer()->render());
         }
+
+        $this->assign('CROWNS', $this->getCrownsList());
+
         $content = $this->environment->render($this->template, $this->template_vars);
 
         ob_clean();
@@ -119,5 +126,15 @@ class Response
         header("Content-Type: " . self::TYPE_JSON);
         echo $content;
         ob_end_flush();
+    }
+
+    private function getCrownsList()
+    {
+        $sql = Db::getInstance();
+
+        $query = "SELECT c.name, c.small_name FROM crown c";
+        $data = $sql->exec($query);
+
+        return $data;
     }
 }

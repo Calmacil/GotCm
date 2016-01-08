@@ -9,10 +9,12 @@
 namespace Got\Core;
 
 
+use DebugBar\DataCollector\PDO\TraceablePDO;
+
 class Db
 {
     /**
-     * @var \PDO
+     * @var \PDO | TraceablePDO
      */
     private $pdo;
 
@@ -33,7 +35,14 @@ class Db
         Debug::info("Establishing DB connection for $dsn");
 
         try {
-            $this->pdo = new \PDO($dsn, $conf->user, $conf->password);
+            $pdo = new \PDO($dsn, $conf->user, $conf->password);;
+            if (Config::get('debug')) {
+                $this->pdo = new TraceablePDO($pdo);
+                Debug::info("Adding PDO collector to the dbug");
+            } else {
+                $this->pdo = $pdo;
+            }
+            $pdo->query('SET NAMES utf8');
         }
         catch(\PDOException $e) {
             Debug::error("Cannot establish database connection:\n{$e->getMessage()}\n{$e->getTraceAsString()}");
@@ -82,5 +91,14 @@ class Db
         }
 
         return false;
+    }
+
+    /**
+     * Use it only for debugbar
+     * @return \PDO
+     */
+    public function getConnection()
+    {
+        return $this->pdo;
     }
 }

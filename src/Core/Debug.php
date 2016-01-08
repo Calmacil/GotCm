@@ -9,6 +9,7 @@
 namespace Got\Core;
 
 use DebugBar\DataCollector\PDO\PDOCollector;
+use DebugBar\DataCollector\PDO\TraceablePDO;
 use DebugBar\JavascriptRenderer;
 use DebugBar\StandardDebugBar;
 class Debug
@@ -35,8 +36,15 @@ class Debug
     private function __construct()
     {
         $this->debugBar = new StandardDebugBar();
-        $this->debugBar->addCollector(new PDOCollector());
-        $this->renderer = $this->debugBar->getJavascriptRenderer("/debugbar");
+    }
+
+    /**
+     * @param TraceablePDO $pdo
+     */
+    public function setupPdoCollector($pdo)
+    {
+        $collector = new PDOCollector($pdo);
+        $this->debugBar->addCollector($collector);
     }
 
     /**
@@ -53,6 +61,7 @@ class Debug
 
     public function getRenderer()
     {
+        $this->renderer = $this->debugBar->getJavascriptRenderer("/debugbar");
         return $this->renderer;
     }
 

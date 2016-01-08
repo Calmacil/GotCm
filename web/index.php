@@ -18,6 +18,8 @@ use \Got\Core\Request;
 $conf = new Config(ROOT."/config/config.json");
 if (Config::get('debug')) {
     $debug = Debug::getInstance();
+    $sql = \Got\Core\Db::getInstance();
+    $debug->setupPdoCollector($sql->getConnection());
 }
 
 $router = Router::getInstance(ROOT.Config::get('path')->routes_file);

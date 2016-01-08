@@ -67,16 +67,19 @@ class Debug
 
     public static function info($message)
     {
-        self::$instance->debugBar["messages"]->log('info', $message);
+        if (Config::get('debug'))
+            self::$instance->debugBar["messages"]->log('info', $message);
     }
 
     public static function warning($message)
     {
-        self::$instance->debugBar["messages"]->log('warning', $message);
+        if (Config::get('debug'))
+            self::$instance->debugBar["messages"]->log('warning', $message);
     }
 
     public static function error($message)
     {
-        self::$instance->debugBar["messages"]->log('error', $message);
+        if (Config::get('debug'))
+            self::$instance->debugBar["messages"]->log('error', $message);
     }
 }

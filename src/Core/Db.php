@@ -35,14 +35,14 @@ class Db
         Debug::info("Establishing DB connection for $dsn");
 
         try {
-            $pdo = new \PDO($dsn, $conf->user, $conf->password);;
+            //$pdo = new \PDO($dsn, $conf->user, $conf->password);;
             if (Config::get('debug')) {
-                $this->pdo = new TraceablePDO($pdo);
+                $this->pdo = new TraceablePDO(new \PDO($dsn, $conf->user, $conf->password));
                 Debug::info("Adding PDO collector to the dbug");
             } else {
-                $this->pdo = $pdo;
+                $this->pdo = new \PDO($dsn, $conf->user, $conf->password);
             }
-            $pdo->query('SET NAMES utf8');
+            $this->pdo->query('SET NAMES utf8');
         }
         catch(\PDOException $e) {
             Debug::error("Cannot establish database connection:\n{$e->getMessage()}\n{$e->getTraceAsString()}");
